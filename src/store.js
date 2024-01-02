@@ -1,6 +1,6 @@
-import { readable } from 'svelte/store';
+import { readable, writable } from 'svelte/store';
 
-export const WHOStandard = readable([
+export const WHOStandardStore = readable([
     {
         min: -1,
         max: 18.5,
@@ -23,7 +23,7 @@ export const WHOStandard = readable([
     },
 ]);
 
-export const AsiaPacificStandard = readable([
+export const AsiaPacificStandardStore = readable([
     {
         min: -1,
         max: 18.5,
@@ -45,3 +45,9 @@ export const AsiaPacificStandard = readable([
         classification: 'obese'
     },
 ]);
+
+export const CalculatorResultStore = writable({
+    bmi: null,
+    who: null,
+    ap: null,
+});

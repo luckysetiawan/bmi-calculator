@@ -1,5 +1,5 @@
 <script>
-  import { WHOStandard, AsiaPacificStandard } from '../../store';
+  import { WHOStandardStore, AsiaPacificStandardStore } from '../../store';
 </script>
 
 <div class="container mx-auto max-w-7xl">
@@ -27,7 +27,7 @@
               </tr>
             </thead>
             <tbody>
-              {#each $WHOStandard as {min, max, classification}}
+              {#each $WHOStandardStore as {min, max, classification}}
               <tr>
                 {#if min === -1}
                     <td class="border text-center px-4 py-2">{'<'} {max}</td>
@@ -54,7 +54,7 @@
               </tr>
             </thead>
             <tbody>
-              {#each $AsiaPacificStandard as {min, max, classification}}
+              {#each $AsiaPacificStandardStore as {min, max, classification}}
               <tr>
                 {#if min === -1}
                     <td class="border text-center px-4 py-2">{'<'} {max}</td>
