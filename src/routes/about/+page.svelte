@@ -1,3 +1,7 @@
+<script>
+  import { WHOStandard, AsiaPacificStandard } from '../../store';
+</script>
+
 <div class="container mx-auto max-w-7xl">
     <p class="text-3xl font-bold">About</p><br>
     
@@ -23,22 +27,19 @@
               </tr>
             </thead>
             <tbody>
+              {#each $WHOStandard as {min, max, classification}}
               <tr>
-                <td class="border text-center px-4 py-2">{'<'} 18.5</td>
-                <td class="border text-center px-4 py-2">underweight</td>
+                {#if min === -1}
+                    <td class="border text-center px-4 py-2">{'<'} {max}</td>
+                {:else if max === -1}
+                    <td class="border text-center px-4 py-2">{'>='} {min}</td>
+                {:else}
+                    <td class="border text-center px-4 py-2">{min} - {max}</td>
+                {/if}
+
+                <td class="border text-center px-4 py-2">{classification}</td>
               </tr>
-              <tr>
-                <td class="border text-center px-4 py-2">18.5 - 24.9</td>
-                <td class="border text-center px-4 py-2">normal</td>
-              </tr>
-              <tr>
-                <td class="border text-center px-4 py-2">25 - 29.9</td>
-                <td class="border text-center px-4 py-2">overweight</td>
-              </tr>
-              <tr>
-                <td class="border text-center px-4 py-2">{'>='} 30</td>
-                <td class="border text-center px-4 py-2">obese</td>
-              </tr>
+              {/each}
             </tbody>
         </table>
     
@@ -53,22 +54,19 @@
               </tr>
             </thead>
             <tbody>
+              {#each $AsiaPacificStandard as {min, max, classification}}
               <tr>
-                <td class="border text-center px-4 py-2">{'<'} 18.5</td>
-                <td class="border text-center px-4 py-2">underweight</td>
+                {#if min === -1}
+                    <td class="border text-center px-4 py-2">{'<'} {max}</td>
+                {:else if max === -1}
+                    <td class="border text-center px-4 py-2">{'>='} {min}</td>
+                {:else}
+                    <td class="border text-center px-4 py-2">{min} - {max}</td>
+                {/if}
+
+                <td class="border text-center px-4 py-2">{classification}</td>
               </tr>
-              <tr>
-                <td class="border text-center px-4 py-2">18.5 - 22.9</td>
-                <td class="border text-center px-4 py-2">normal</td>
-              </tr>
-              <tr>
-                <td class="border text-center px-4 py-2">23 - 24.9</td>
-                <td class="border text-center px-4 py-2">overweight</td>
-              </tr>
-              <tr>
-                <td class="border text-center px-4 py-2">{'>='} 25</td>
-                <td class="border text-center px-4 py-2">obese</td>
-              </tr>
+              {/each}
             </tbody>
         </table>
     </div>
