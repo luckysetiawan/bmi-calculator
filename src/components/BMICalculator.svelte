@@ -19,7 +19,9 @@
     }
 
     const calculateBMI = (_weight, _height) => {
-        let bmi = _weight / (_height * _height);
+        // convert height from m to cm
+        let height = _height / 100;
+        let bmi = _weight / (height * height);
 
         return parseFloat(bmi.toFixed(1));;
     }
@@ -48,7 +50,7 @@
             <input type="number" min = 0 step="0.01" bind:value={ weight } name="weight" id="weight" class="block w-full rounded-md border-0 text-center py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600">
         </div>
 
-        <label for="height" class="block text-sm font-medium leading-6 text-gray-900">Height (m)</label>
+        <label for="height" class="block text-sm font-medium leading-6 text-gray-900">Height (cm)</label>
         <div class="mt-2 mb-4">
             <input type="number" min = 0 step="0.01" bind:value={ height } name="height" id="height" class="block w-full rounded-md border-0 text-center py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600">
         </div>
