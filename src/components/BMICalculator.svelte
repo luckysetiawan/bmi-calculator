@@ -5,6 +5,10 @@
     let height = 0.0;
     let showResult = false;
 
+    const simplifyNumber = (value, digit) => {
+        return parseFloat(value.toFixed(digit));
+    }
+
     const classifyBMI = (_standards, _bmi) => {
         for(const {min, max, classification} of _standards) {
             if (min === -1 || max === -1) {
@@ -23,17 +27,39 @@
         let height = _height / 100;
         let bmi = _weight / (height * height);
 
-        return parseFloat(bmi.toFixed(1));;
+        return simplifyNumber(bmi, 1);
+    }
+
+    const calculateIdealWeight = (_normalStandards, _height) => {
+        let minimumBMI = _normalStandards.min;
+        let maximumBMI = _normalStandards.max;
+        let height = _height / 100;
+
+        let idealMinimumWeight = minimumBMI * (height * height);
+        let idealMaximumWeight = maximumBMI * (height * height);
+
+
+        return {
+            min: idealMinimumWeight,
+            max: idealMaximumWeight,
+        }
     }
 
     const handleSubmit = () => {
         CalculatorResultStore.update((result) => { 
             let bmi = calculateBMI(weight, height);
+            let whoIdealWeight = calculateIdealWeight($WHOStandardStore.find(_standards => _standards.classification === 'normal'), height);
+            let apIdealWeight = calculateIdealWeight($AsiaPacificStandardStore.find(_standards => _standards.classification === 'normal'), height);
+            
 
             result = {
                 bmi: bmi,
-                who: classifyBMI($WHOStandardStore, bmi),
-                ap: classifyBMI($AsiaPacificStandardStore, bmi),
+                whoClassification: classifyBMI($WHOStandardStore, bmi),
+                apClassification: classifyBMI($AsiaPacificStandardStore, bmi),
+                whoIdealWeightMin: simplifyNumber(whoIdealWeight.min, 1),
+                whoIdealWeightMax: simplifyNumber(whoIdealWeight.max, 1),
+                apIdealWeightMin: simplifyNumber(apIdealWeight.min, 1),
+                apIdealWeightMax: simplifyNumber(apIdealWeight.max, 1),
             };
 
             return result;
@@ -61,9 +87,18 @@
     </form>
 
     {#if showResult}
-        <p>Your BMI is {$CalculatorResultStore.bmi}!</p>
-        <p>According to WHO Standard, you are {$CalculatorResultStore.who}.</p>
-        <p>According to Asia Pacific Standard, you are {$CalculatorResultStore.ap}.</p>
+        <p><b>Results</b></p>
+        <hr>
+        <p>Your BMI is <b>{$CalculatorResultStore.bmi}</b>!</p>
+        <hr>
+        <p><b>WHO Standard</b></p>
+        <p>Your BMI classification is: <b>{$CalculatorResultStore.whoClassification}</b>.</p>
+        <p>Your ideal weight is between <b>{$CalculatorResultStore.whoIdealWeightMin} - {$CalculatorResultStore.whoIdealWeightMax}</b>.</p>
+        <hr>
+        <p><b>Asia Pacific Standard</b></p>
+        <p>Your BMI classification is: <b>{$CalculatorResultStore.apClassification}</b>.</p>
+        <p>Your ideal weight is between <b>{$CalculatorResultStore.apIdealWeightMin} - {$CalculatorResultStore.apIdealWeightMax}</b>.</p>
+        <hr>
     {/if}
 </div>
 

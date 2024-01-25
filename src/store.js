@@ -48,6 +48,10 @@ export const AsiaPacificStandardStore = readable([
 
 export const CalculatorResultStore = writable({
     bmi: null,
-    who: null,
-    ap: null,
+    whoClassification: null,
+    apClassification: null,
+    whoIdealWeightMin: null,
+    whoIdealWeightMax: null,
+    apIdealWeightMin: null,
+    apIdealWeightMax: null,
 });
