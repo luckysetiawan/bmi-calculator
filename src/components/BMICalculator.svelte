@@ -93,11 +93,11 @@
         <hr>
         <p><b>WHO Standard</b></p>
         <p>Your BMI classification is: <b>{$CalculatorResultStore.whoClassification}</b>.</p>
-        <p>Your ideal weight is between <b>{$CalculatorResultStore.whoIdealWeightMin} - {$CalculatorResultStore.whoIdealWeightMax}</b>.</p>
+        <p>Your ideal weight is between <b>{$CalculatorResultStore.whoIdealWeightMin} kg - {$CalculatorResultStore.whoIdealWeightMax} kg</b>.</p>
         <hr>
         <p><b>Asia Pacific Standard</b></p>
         <p>Your BMI classification is: <b>{$CalculatorResultStore.apClassification}</b>.</p>
-        <p>Your ideal weight is between <b>{$CalculatorResultStore.apIdealWeightMin} - {$CalculatorResultStore.apIdealWeightMax}</b>.</p>
+        <p>Your ideal weight is between <b>{$CalculatorResultStore.apIdealWeightMin} kg - {$CalculatorResultStore.apIdealWeightMax} kg</b>.</p>
         <hr>
     {/if}
 </div>
