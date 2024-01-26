@@ -2,7 +2,7 @@
   import { WHOStandardStore, AsiaPacificStandardStore } from '../../store';
 </script>
 
-<div class="container mx-auto max-w-7xl">
+<div class="mx-auto max-w-7xl items-center justify-between p-6 lg:px-8">
     <p class="text-3xl font-bold">About</p><br>
     
     <p>BMI Calculator is a tool that can help you calculate your body mass index (BMI) then classify your weight status according to your BMI.</p><br>
