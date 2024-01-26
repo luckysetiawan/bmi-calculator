@@ -15,7 +15,7 @@
         <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5571887/">Asia-Pacific</a></li>
     </ol><br>
 
-    <div class="flex">
+    <div class="flex flex-col md:flex-row">
         <table class="border-collapse border table-auto m-4">
             <caption class="caption-top">
                 WHO Standard
